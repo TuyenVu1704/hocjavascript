@@ -121,12 +121,12 @@ console.log(isFree); //true
 /**
  * Phương thức : find()
  * Dùng để tìm kiếm
- * Giá trị trả 1 đối tượng đầu tiên
+ * Giá trị trả 1 đối tượng đầu tiên object
  * Cách dùng: Một biến = Array.find(function(Tham số 1, Tham số 2){
  * return
  * })
  * Tham số 1 là : từn phần tử của mảng (tuỳ ý đặt tên)
- * Tham số 2 là: index (tuỳ ý đặt tên)
+ * Tham số 2 là: index ()
  */
 
 var courseName = courses.find(function (course, index) {
@@ -138,10 +138,74 @@ console.log(courseName);
 /**
  * Phương thức : filter()
  * Dùng để tìm kiếm
- * Giá trị trả về kiểu boolean
+ * Giá trị trả về kiểu object
  * Cách dùng: Một biến = Array.find(function(Tham số 1, Tham số 2){
  * return
  * })
  * Tham số 1 là : từn phần tử của mảng (tuỳ ý đặt tên)
  * Tham số 2 là: index (tuỳ ý đặt tên)
  */
+
+/**
+ * Phương thức : map()
+ * Dùng để thêm hoặc chỉnh sửa toàn bộ các phần tử trong mảng
+ * Giá trị trả về kiểu mảng
+ * Cách dùng: Một biến = Array.map(function(Tham số 1, Tham số 2){
+ *
+ * })
+ * Tham số 1 là : từn phần tử của mảng (tuỳ ý đặt tên)
+ * Tham số 2 là: index ()
+ */
+
+function fCourseHandler(course, index) {
+    var arrcourse = [
+        {
+            id: course.id,
+            name: `Khoá học: ${course.name}`,
+            coin: course.coin,
+            coinText: course.coin,
+        },
+    ];
+
+    return arrcourse;
+}
+
+var arrCourses = courses.map(fCourseHandler);
+console.log(arrCourses);
+
+/**
+ * Phương thức : reduce()
+ * Dùng để nhận về giá trị duy nhất như: tính tổng
+ * Giá trị trả về kiểu mảng
+ * Cách dùng: Một biến = Array.map(function),giá trị khởi tạo biến lưu trữ){
+ * })
+ *
+ * function (accumulator, currentValue, currentIndex, originArray)
+ *
+ * - accumulator: Biến lưu trữ
+ * - currentValue: Giá trị hiện tại
+ * - currentIndex: Chỉ mục  như : 0,1,2....
+ * - originArray: Trả về chính vùng Array.
+ * Gía trị khởi tạo có thể là array, object,.... (Giá trị khởi tạo là không bắt buộc)
+ * - Giá trị khởi tạo ban đầu cho biến lưu trữ
+ * Tham số 1 là : từn phần tử của mảng (tuỳ ý đặt tên)
+ * Tham số 2 là: index (tuỳ ý đặt tên)
+ */
+
+var i = 0;
+function fcoinHandler(accumulator, currentValue, currentIndex, originArray) {
+    i++;
+    console.table({
+        "Lượt Chạy:": i,
+        "Biến tích trữ:": accumulator,
+        "Giá cộng thêm:": currentValue.coin,
+        "Tích trữ được": accumulator + currentValue.coin,
+    });
+    console.log(currentValue);
+
+    return accumulator + currentValue.coin;
+}
+
+var totalCoin = courses.reduce(fcoinHandler, 0);
+
+console.log(totalCoin);
