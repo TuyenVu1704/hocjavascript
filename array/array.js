@@ -175,7 +175,7 @@ console.log(arrCourses);
 
 /**
  * Phương thức : reduce()
- * Dùng để nhận về giá trị duy nhất như: tính tổng
+ * Dùng để nhận về giá trị duy nhất như: tính tổng, Làm phẳng mảng
  * Giá trị trả về kiểu mảng
  * Cách dùng: Một biến = Array.map(function),giá trị khởi tạo biến lưu trữ){
  * })
@@ -209,3 +209,62 @@ function fcoinHandler(accumulator, currentValue, currentIndex, originArray) {
 var totalCoin = courses.reduce(fcoinHandler, 0);
 
 console.log(totalCoin);
+
+// Flat - Làm Phẳng mảng từ Depth Array
+
+var depthArrays = [1, 2, [3, 4], 5, 6, [7, 8, 9]];
+
+var flatArray = depthArrays.reduce(function (flatArrayOutput, depthItem) {
+    return flatArrayOutput.concat(depthItem);
+}, []);
+
+console.log(flatArray);
+
+//  Lấy các khoá học đưa vào mảng mới
+
+var topics = [
+    {
+        topic: "Front-End",
+        courses: [
+            {
+                id: 1,
+                title: "HTML - CSS",
+            },
+            {
+                id: 2,
+                title: "Javascript",
+            },
+        ],
+    },
+    {
+        topic: "Back - End",
+        courses: [
+            {
+                id: 3,
+                title: "PHP",
+            },
+            {
+                id: 4,
+                title: "NodeJS",
+            },
+        ],
+    },
+];
+
+var flatCourses = topics.reduce(function (flatArrayTopicsOutput, topicsItem) {
+    return flatArrayTopicsOutput.concat(topicsItem.courses);
+}, []);
+
+console.log(flatCourses);
+
+var newCourses = flatCourses.map(function (coursesItem) {
+    var coursesAr = [
+        {
+            title: `${coursesItem.title}`,
+        },
+    ];
+
+    return coursesAr;
+});
+
+console.log(newCourses);
