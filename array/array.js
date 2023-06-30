@@ -268,3 +268,18 @@ var newCourses = flatCourses.map(function (coursesItem) {
 });
 
 console.log(newCourses);
+
+// Lấy giá trị mảng lồng mảng ra object
+
+function getArr(arr) {
+    return arr.reduce(function (newObject, newItem) {
+        newObject[newItem[0]] = newItem[1];
+        return newObject;
+    }, {});
+}
+var arr = [
+    ["name", "Tuyen"],
+    ["age", 18],
+];
+
+console.log(getArr(arr));
