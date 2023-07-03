@@ -269,7 +269,7 @@ var newCourses = flatCourses.map(function (coursesItem) {
 
 console.log(newCourses);
 
-// Lấy giá trị mảng lồng mảng ra object
+// Lấy giá trị mảng 2 chieu ra object
 
 function getArr(arr) {
     return arr.reduce(function (newObject, newItem) {
