@@ -47,8 +47,6 @@ Array.prototype.forEach2 = function (callback) {
     }
 };
 
-console.log(Array.prototype);
-
 courses.forEach2(function (element, index, array) {
     console.log(element, index, array);
 });
